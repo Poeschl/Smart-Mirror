@@ -5,6 +5,8 @@ Its basically a kiosk chromium browser running on boot.
 
 ## Install
 
+Clone the repository onto your Pi 2,3,4 with `git clone https://github.com/Poeschl/Smart-Mirror.git` to a location of your liking.
+
 The install script is assuming an Raspberian image with desktop packages and the user `pi`.
 If this requirement is met, execute the `install.sh` script.
 
