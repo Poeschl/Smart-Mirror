@@ -2,6 +2,7 @@
 
 This contains the code I use for running a Smart Mirror.
 Its basically a kiosk chromium browser running on boot.
+Also a simple REST interface allows to turn on/off the connected monitor.
 
 ## Install
 
@@ -16,6 +17,10 @@ Chromium will be inserted as autostart application.
 ## Configuration
 
 To configure the page the browser is starting change the `START_URL` parameter in the `run.sh` script in the `pi` user folder.
+
+## REST interface
+
+Turn the monitor off with `http://<pi-ip>:8080/off` and on with `http://<pi-ip>:8080/on`.
 
 ## Screen rotation
 

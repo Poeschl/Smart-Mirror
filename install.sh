@@ -7,14 +7,12 @@ sudo apt-get update
 echo "Install unclutter to hide the mouse cursor"
 sudo apt-get install unclutter -y --no-install-recommends
 
-echo "Adjust autostart (Screensaver, run script)"
+echo "Disable screensaver"
 sudo sed -i.bak '/.*xscreensaver.*/d' /etc/xdg/lxsession/LXDE-pi/autostart
 printf "
 @xset s off
 @xset -dpms
 @xset s noblank
-
-@/home/pi/start/fullscreen-browser.sh
 " | sudo tee -a /etc/xdg/lxsession/LXDE-pi/autostart
 
 echo "Update chromium"
@@ -37,6 +35,12 @@ START_URL="https://http.cat/200"
   --disable-pinch
 ' > /home/pi/start/fullscreen-browser.sh
 sudo chmod +x /home/pi/start/fullscreen-browser.sh
+printf "@/home/pi/start/fullscreen-browser.sh" | sudo tee -a /etc/xdg/lxsession/LXDE-pi/autostart
+
+echo "Install cec tools for display turn off"
+sudo apt-get install libcec-dev build-essential python-dev -y --no-install-recommends
+cp cec /home/pi/start/cec 
+printf "@cd /home/pi/start/cec && ./start.sh" | sudo tee -a /etc/xdg/lxsession/LXDE-pi/autostart
 
 echo "Restart lightdm"
 sudo service lightdm restart
