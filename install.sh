@@ -37,8 +37,7 @@ START_URL="https://http.cat/200"
 sudo chmod +x /home/pi/start/fullscreen-browser.sh
 printf "@/home/pi/start/fullscreen-browser.sh" | sudo tee -a /etc/xdg/lxsession/LXDE-pi/autostart
 
-echo "Install cec tools for display turn off"
-sudo apt-get install libcec-dev build-essential python-dev -y --no-install-recommends
+echo "Install tools for display turn off"
 cp cec /home/pi/start/cec 
 printf "@cd /home/pi/start/cec && ./start.sh" | sudo tee -a /etc/xdg/lxsession/LXDE-pi/autostart
 

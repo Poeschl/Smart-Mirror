@@ -1,17 +1,13 @@
 """Simple webserver which enable / disable the monitor"""
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from urllib.parse import urlparse
-import cec
+import subprocess
 
 PORT = 8080
 
 class Handler(BaseHTTPRequestHandler):
     ON_PATH = "/on"
     OFF_PATH = "/off"
-
-    cec.init()
-    monitor = cec.list_devices()[0]
-    print monitor
 
     def do_GET(self):
         paths = {self.ON_PATH: self._on,
@@ -24,12 +20,12 @@ class Handler(BaseHTTPRequestHandler):
         self.end_headers()
 
     def _on(self):
-        monitor.power_on()
+        subprocess.run(['vcgencmd', 'display_power', '1'])
         self.send_response(204)
         self.end_headers()
 
     def _off(self):
-        monitor.standby()
+        subprocess.run(['vcgencmd', 'display_power', '0'])
         self.send_response(204)
         self.end_headers()
 
