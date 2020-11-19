@@ -27,3 +27,7 @@ display_rotate=3 # 270° rotation
 ```
 
 After a restart the orientation should be correct.
+
+## System Data
+
+To gatter also some metrics about the running pi, take a look at https://github.com/Sennevds/system_sensors
