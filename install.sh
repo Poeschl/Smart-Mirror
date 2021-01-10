@@ -35,6 +35,7 @@ START_URL="https://http.cat/200"
   --disable-infobars \
   --check-for-update-interval=604800 \
   --disable-pinch
+  --force-device-scale-factor=1.5
 ' > /home/pi/start/fullscreen-browser.sh
 sudo chmod +x /home/pi/start/fullscreen-browser.sh
 
